@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://text-tools-nine.vercel.app";
 
 export const defaultMetadata: Metadata = {
   title: {

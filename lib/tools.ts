@@ -16,10 +16,10 @@ export const tools: Tool[] = [
     icon: "Type",
   },
   {
-    id: "text-diff",
+    id: "text-difference",
     name: "Text Difference",
     description: "Compare two texts and find the differences",
-    path: "/text-diff",
+    path: "/text-difference",
     icon: "GitCompare",
   },
   {
