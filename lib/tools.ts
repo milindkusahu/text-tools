@@ -57,6 +57,13 @@ export const tools: Tool[] = [
     path: "/slug-generator",
     icon: "Link",
   },
+  {
+    id: "keyword-analyzer",
+    name: "Keyword Analyzer",
+    description: "Analyze keyword density and frequency in your text",
+    path: "/keyword-analyzer",
+    icon: "BarChart2",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {

@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import TextArea from "../shared/TextArea";
 import { ToolProps } from "@/lib/types";
-import toast from "react-hot-toast";
 import { Copy } from "lucide-react";
+import toast from "react-hot-toast";
 
 type CaseType =
   | "upper"
@@ -22,7 +22,7 @@ export default function CaseConverter({
 }: ToolProps) {
   const [selectedCase, setSelectedCase] = useState<CaseType>("upper");
 
-  const convertCase = (text: string, type: CaseType): string => {
+  const convertCase = useCallback((text: string, type: CaseType): string => {
     switch (type) {
       case "upper":
         return text.toUpperCase();
@@ -67,20 +67,21 @@ export default function CaseConverter({
       default:
         return text;
     }
-  };
+  }, []);
 
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(output);
       toast.success("Copied to clipboard!");
-    } catch (error) {
+    } catch {
       toast.error("Failed to copy text");
     }
   };
 
   useEffect(() => {
-    setOutput(convertCase(input, selectedCase));
-  }, [input, selectedCase]);
+    const convertedText = convertCase(input, selectedCase);
+    setOutput(convertedText);
+  }, [input, selectedCase, convertCase, setOutput]);
 
   return (
     <div className="space-y-6">
