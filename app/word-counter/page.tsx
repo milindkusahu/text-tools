@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Free online word counter tool. Count words, characters, sentences, and paragraphs in your text.",
   alternates: {
-    canonical: "http://localhost:3000/word-counter",
+    canonical: "https://text-tools-nine.vercel.app/word-counter",
   },
 };
 
