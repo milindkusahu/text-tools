@@ -64,6 +64,13 @@ export const tools: Tool[] = [
     path: "/keyword-analyzer",
     icon: "BarChart2",
   },
+  {
+    id: "character-counter",
+    name: "Character Counter Pro",
+    description: "Advanced text analysis with social media limits",
+    path: "/character-counter",
+    icon: "BarChart",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {
