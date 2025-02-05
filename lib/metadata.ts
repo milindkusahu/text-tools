@@ -53,3 +53,35 @@ export const defaultMetadata: Metadata = {
     },
   },
 };
+
+export function constructMetadata({
+  title,
+  description,
+  path,
+  keywords = [],
+}: {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+}): Metadata {
+  return {
+    title,
+    description,
+    keywords: [...(defaultMetadata.keywords || []), ...keywords],
+    alternates: {
+      canonical: `${baseUrl}${path}`,
+    },
+    openGraph: {
+      ...defaultMetadata.openGraph,
+      title,
+      description,
+      url: `${baseUrl}${path}`,
+    },
+    twitter: {
+      ...defaultMetadata.twitter,
+      title,
+      description,
+    },
+  };
+}
