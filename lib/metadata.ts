@@ -6,7 +6,7 @@ const baseUrl =
 export const defaultMetadata: Metadata = {
   title: {
     default: "Text Tools - Online Text Utilities",
-    template: "%s | Text Tools",
+    template: "%s",
   },
   description:
     "Free online text tools for case conversion, word counting, and more text manipulation utilities.",
