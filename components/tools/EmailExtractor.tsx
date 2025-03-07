@@ -52,7 +52,7 @@ export default function EmailExtractor({
       // Extract all emails
       const matches = text.match(regex) || [];
 
-      let extractedEmails = matches;
+      let emails: string[] = Array.from(matches);
       let duplicateCount = 0;
 
       // Remove duplicates if option is enabled
@@ -60,7 +60,7 @@ export default function EmailExtractor({
         const uniqueSet = new Set<string>();
         const unique: string[] = [];
 
-        extractedEmails.forEach((email) => {
+        emails.forEach((email) => {
           const normalizedEmail = email.toLowerCase();
           if (!uniqueSet.has(normalizedEmail)) {
             uniqueSet.add(normalizedEmail);
@@ -70,14 +70,12 @@ export default function EmailExtractor({
           }
         });
 
-        extractedEmails = unique;
+        emails = unique;
       }
 
       // Sort alphabetically if option is enabled
       if (options.sortAlphabetically) {
-        extractedEmails.sort((a, b) =>
-          a.toLowerCase().localeCompare(b.toLowerCase())
-        );
+        emails.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
       }
 
       // Validation statistics
@@ -85,7 +83,7 @@ export default function EmailExtractor({
       let invalidCount = 0;
 
       if (options.validateEmails) {
-        extractedEmails.forEach((email) => {
+        emails.forEach((email) => {
           if (EMAIL_REGEX.test(email)) {
             validCount++;
           } else {
@@ -93,19 +91,19 @@ export default function EmailExtractor({
           }
         });
       } else {
-        validCount = extractedEmails.length;
+        validCount = emails.length;
       }
 
       // Update statistics
       setStats({
-        total: extractedEmails.length,
+        total: emails.length,
         valid: validCount,
         invalid: invalidCount,
         duplicates: duplicateCount,
       });
 
       // Update the output
-      setOutput(extractedEmails.join("\n"));
+      setOutput(emails.join("\n"));
     },
     [setOutput]
   );
