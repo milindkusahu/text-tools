@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1">
             <Link href="/" className="text-xl font-bold text-blue-600">
-              TextTools
+              TextStash
             </Link>
             <p className="mt-4 text-gray-600">
               Free online text tools for developers and content creators.
@@ -115,7 +115,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600">
-            © {new Date().getFullYear()} TextTools. All rights reserved.
+            © {new Date().getFullYear()} TextStash. All rights reserved.
           </p>
         </div>
       </div>
