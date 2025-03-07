@@ -71,6 +71,13 @@ export const tools: Tool[] = [
     path: "/character-counter",
     icon: "BarChart",
   },
+  {
+    id: "email-extractor",
+    name: "Email Extractor",
+    description: "Extract and validate email addresses from text",
+    path: "/email-extractor",
+    icon: "AtSign",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {
