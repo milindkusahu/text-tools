@@ -8,7 +8,7 @@ import "@/app/globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://text-tools-nine.vercel.app"),
+  metadataBase: new URL("https://www.textstash.com"),
   title: {
     default: "Text Tools - Online Text Utilities",
     template: "%s",

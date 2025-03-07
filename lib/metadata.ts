@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://text-tools-nine.vercel.app";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.textstash.com";
 
 export const defaultMetadata: Metadata = {
   title: {

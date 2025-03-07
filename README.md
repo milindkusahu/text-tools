@@ -6,7 +6,7 @@ A modern web application built with Next.js that provides various text manipulat
 
 ## 🚀 Live Demo
 
-Check out the live application at [text-tools-nine.vercel.app](https://text-tools-nine.vercel.app)
+Check out the live application at [www.textstash.com](https://www.textstash.com)
 
 ## ✨ Features
 
@@ -20,6 +20,7 @@ Check out the live application at [text-tools-nine.vercel.app](https://text-tool
   - Convert to Sentence case
   - Convert to aLtErNaTiNg case
   - Convert to iNvErSe case
+
 - **Text Transformation**
 
   - Remove Extra Spaces
@@ -31,6 +32,7 @@ Check out the live application at [text-tools-nine.vercel.app](https://text-tool
   - Reverse Text
   - Word Count
   - Character Count
+
 - **Text Formatting**
 
   - Text to Binary
@@ -41,6 +43,7 @@ Check out the live application at [text-tools-nine.vercel.app](https://text-tool
   - HTML Encode/Decode
   - JSON Formatter
   - XML Formatter
+
 - **Additional Features**
 
   - Copy to Clipboard
@@ -70,11 +73,13 @@ Check out the live application at [text-tools-nine.vercel.app](https://text-tool
    ```bash
    git clone https://github.com/milindkusahu/text-tools.git
    ```
+
 2. Navigate to the project directory:
 
    ```bash
    cd text-tools
    ```
+
 3. Install dependencies:
 
    ```bash
@@ -84,6 +89,7 @@ Check out the live application at [text-tools-nine.vercel.app](https://text-tool
    # or
    pnpm install
    ```
+
 4. Start the development server:
 
    ```bash
@@ -93,6 +99,7 @@ Check out the live application at [text-tools-nine.vercel.app](https://text-tool
    # or
    pnpm dev
    ```
+
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## 📁 Project Structure

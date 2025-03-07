@@ -1,56 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://text-tools-nine.vercel.app</loc>
+    <loc>https://www.textstash.com</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/word-counter</loc>
+    <loc>https://www.textstash.com/word-counter</loc>
     <lastmod>2025-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/case-converter</loc>
+    <loc>https://www.textstash.com/case-converter</loc>
     <lastmod>2025-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/text-difference</loc>
+    <loc>https://www.textstash.com/text-difference</loc>
     <lastmod>2025-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/markdown-editor</loc>
+    <loc>https://www.textstash.com/markdown-editor</loc>
     <lastmod>2025-01-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/json-formatter</loc>
+    <loc>https://www.textstash.com/json-formatter</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/text-cleaner</loc>
+    <loc>https://www.textstash.com/text-cleaner</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/lorem-generator</loc>
+    <loc>https://www.textstash.com/lorem-generator</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://text-tools-nine.vercel.app/slug-generator</loc>
+    <loc>https://www.textstash.com/slug-generator</loc>
     <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.textstash.com/keyword-analyzer</loc>
+    <lastmod>2025-01-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.textstash.com/character-counter</loc>
+    <lastmod>2025-02-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.textstash.com/email-extractor</loc>
+    <lastmod>2025-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

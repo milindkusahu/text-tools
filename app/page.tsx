@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Collection of free online text tools for developers and writers.",
   alternates: {
-    canonical: "https://text-tools-nine.vercel.app",
+    canonical: "https://www.textstash.com",
   },
 };
 
