@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { tools } from "@/lib/tools";
-import { Github, Twitter } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -17,29 +17,51 @@ export default function Footer() {
             </p>
             <div className="mt-4 flex gap-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/milindkusahu/text-tools"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
+                aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://twitter.com/yourusername"
+                href="mailto:contact@textstash.com"
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+              <a
+                href="https://milindsahu.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
+                aria-label="Personal Website"
               >
-                <Twitter className="w-5 h-5" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="w-5 h-5"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
               </a>
             </div>
           </div>
 
           {/* Tools */}
           <div className="col-span-1">
-            <h3 className="font-semibold text-gray-900 mb-4">Tools</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Popular Tools</h3>
             <ul className="space-y-2">
-              {tools.map((tool) => (
+              {tools.slice(0, 6).map((tool) => (
                 <li key={tool.id}>
                   <Link
                     href={tool.path}
@@ -54,7 +76,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="col-span-1">
-            <h3 className="font-semibold text-gray-900 mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -62,6 +84,14 @@ export default function Footer() {
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  Contact
                 </Link>
               </li>
               <li>
@@ -78,14 +108,6 @@ export default function Footer() {
                   className="text-gray-600 hover:text-blue-600 transition-colors"
                 >
                   Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  Contact
                 </Link>
               </li>
             </ul>
@@ -115,7 +137,16 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600">
-            © {new Date().getFullYear()} TextStash. All rights reserved.
+            © {new Date().getFullYear()} TextStash by{" "}
+            <a
+              href="https://milindsahu.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-blue-600"
+            >
+              Milind Kumar Sahu
+            </a>
+            . All rights reserved.
           </p>
         </div>
       </div>
