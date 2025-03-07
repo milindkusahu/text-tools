@@ -2,7 +2,7 @@
 
 A modern web application built with Next.js that provides various text manipulation and formatting tools.
 
-![App Demo](public\Text-Tools-Online.png "App Demo")
+![App Demo](https://raw.githubusercontent.com/milindkusahu/text-tools/refs/heads/main/public/Text-Tools-Online.png)
 
 ## 🚀 Live Demo
 
