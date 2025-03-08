@@ -26,7 +26,9 @@ export const defaultMetadata: Metadata = {
       "Free online text tools for case conversion, word counting, and more text manipulation utilities.",
     images: [
       {
-        url: "/og-image.png",
+        url: `/api/og?title=${encodeURIComponent(
+          "Text Tools"
+        )}&description=${encodeURIComponent("Online Text Utilities")}`,
         width: 1200,
         height: 630,
         alt: "Text Tools",
@@ -38,7 +40,11 @@ export const defaultMetadata: Metadata = {
     title: "Text Tools - Online Text Utilities",
     description:
       "Free online text tools for case conversion, word counting, and more text manipulation utilities.",
-    images: ["/og-image.png"],
+    images: [
+      `/api/og?title=${encodeURIComponent(
+        "Text Tools"
+      )}&description=${encodeURIComponent("Online Text Utilities")}`,
+    ],
   },
   robots: {
     index: true,
@@ -53,17 +59,29 @@ export const defaultMetadata: Metadata = {
   },
 };
 
+export interface MetadataParams {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+  tool?: string;
+  theme?: "blue" | "purple" | "green";
+}
+
 export function constructMetadata({
   title,
   description,
   path,
   keywords = [],
-}: {
-  title: string;
-  description: string;
-  path: string;
-  keywords?: string[];
-}): Metadata {
+  tool = "",
+  theme = "blue",
+}: MetadataParams): Metadata {
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(
+    title
+  )}&description=${encodeURIComponent(description)}${
+    tool ? `&tool=${encodeURIComponent(tool)}` : ""
+  }${theme ? `&theme=${theme}` : ""}`;
+
   return {
     title,
     description,
@@ -76,11 +94,20 @@ export function constructMetadata({
       title,
       description,
       url: `${baseUrl}${path}`,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       ...defaultMetadata.twitter,
       title,
       description,
+      images: [ogImageUrl],
     },
   };
 }

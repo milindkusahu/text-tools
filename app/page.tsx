@@ -2,16 +2,15 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { tools } from "@/lib/tools";
 import { ArrowRight, Wand2, Zap, Shield } from "lucide-react";
+import { constructMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = constructMetadata({
   title: "Text Tools - Online Text Utilities",
   description:
     "Collection of free online text tools for developers and writers.",
-  alternates: {
-    canonical: "https://www.textstash.com",
-  },
-};
-
+  path: "/",
+  theme: "blue", // Using the default blue theme for homepage
+});
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
