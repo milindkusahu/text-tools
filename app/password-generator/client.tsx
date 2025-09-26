@@ -73,8 +73,7 @@ const passwordGeneratorInfo = {
 };
 
 export default function ClientPasswordGenerator() {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
+  const [, setOutput] = useState("");
 
   return (
     <ToolPageLayout
@@ -82,12 +81,7 @@ export default function ClientPasswordGenerator() {
       description="Generate secure, customizable passwords with advanced security analysis. Create strong passwords for all your accounts with professional-grade security features."
       toolInfo={passwordGeneratorInfo}
     >
-      <PasswordGenerator
-        input={input}
-        setInput={setInput}
-        output={output}
-        setOutput={setOutput}
-      />
+      <PasswordGenerator setOutput={setOutput} />
     </ToolPageLayout>
   );
 }

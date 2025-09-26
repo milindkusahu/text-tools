@@ -33,7 +33,7 @@ export default function TextEncoder({
         default:
           return text;
       }
-    } catch (error) {
+    } catch {
       return "Error encoding text";
     }
   }, []);
@@ -55,7 +55,7 @@ export default function TextEncoder({
         default:
           return text;
       }
-    } catch (error) {
+    } catch {
       return "Error decoding text";
     }
   }, []);

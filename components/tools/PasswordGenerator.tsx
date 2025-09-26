@@ -44,11 +44,8 @@ interface PasswordHistoryItem {
 }
 
 export default function PasswordGenerator({
-  input,
-  setInput,
-  output,
   setOutput,
-}: ToolProps) {
+}: Pick<ToolProps, "setOutput">) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [passwordHistory, setPasswordHistory] = useState<PasswordHistoryItem[]>(
@@ -72,14 +69,17 @@ export default function PasswordGenerator({
   });
 
   // Character sets as constants
-  const CHARACTER_SETS = {
-    uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    lowercase: "abcdefghijklmnopqrstuvwxyz",
-    numbers: "0123456789",
-    symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?",
-    similar: "il1Lo0O",
-    ambiguous: "{}[]()/\\'\"`~,;.<>",
-  };
+  const CHARACTER_SETS = useMemo(
+    () => ({
+      uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      lowercase: "abcdefghijklmnopqrstuvwxyz",
+      numbers: "0123456789",
+      symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?",
+      similar: "il1Lo0O",
+      ambiguous: "{}[]()/\\'\"`~,;.<>",
+    }),
+    []
+  );
 
   // Memoized character set calculation
   const charset = useMemo(() => {
@@ -108,7 +108,7 @@ export default function PasswordGenerator({
     }
 
     return chars;
-  }, [options]);
+  }, [options, CHARACTER_SETS]);
 
   // Enhanced password analysis with better entropy calculation
   const analyzePassword = useCallback((pwd: string) => {
@@ -303,12 +303,12 @@ export default function PasswordGenerator({
         { password: newPassword, timestamp: Date.now(), analysis },
         ...prev.slice(0, 9),
       ]);
-    } catch (error) {
+    } catch {
       toast.error("Failed to generate password");
     } finally {
       setIsGenerating(false);
     }
-  }, [charset, options, analyzePassword, setOutput]);
+  }, [charset, options, analyzePassword, setOutput, CHARACTER_SETS]);
 
   // Bulk password generation
   const generateBulkPasswords = useCallback(
@@ -357,9 +357,12 @@ export default function PasswordGenerator({
     }
   };
 
-  const updateOption = useCallback((key: keyof PasswordOptions, value: any) => {
-    setOptions((prev) => ({ ...prev, [key]: value }));
-  }, []);
+  const updateOption = useCallback(
+    (key: keyof PasswordOptions, value: string | number | boolean) => {
+      setOptions((prev) => ({ ...prev, [key]: value }));
+    },
+    []
+  );
 
   const clearHistory = useCallback(() => {
     setPasswordHistory([]);
