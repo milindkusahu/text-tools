@@ -406,12 +406,12 @@ export default function PasswordGenerator({
   }, [generatePassword]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 max-w-full overflow-hidden">
       {/* Generated Password Display */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
           <h3 className="text-lg font-semibold">Generated Password</h3>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setShowPassword(!showPassword)}
               className="p-2 text-gray-500 hover:text-gray-700 transition-colors"
@@ -425,53 +425,55 @@ export default function PasswordGenerator({
             </button>
             <button
               onClick={() => copyToClipboard(password)}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 text-sm sm:text-base"
               disabled={!password}
             >
               <Copy className="w-4 h-4" />
-              Copy
+              <span className="hidden sm:inline">Copy</span>
             </button>
             <button
               onClick={generatePassword}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors disabled:opacity-50 text-sm sm:text-base"
               disabled={isGenerating}
             >
               <RefreshCw
                 className={`w-4 h-4 ${isGenerating ? "animate-spin" : ""}`}
               />
-              Generate
+              <span className="hidden sm:inline">Generate</span>
             </button>
             <button
               onClick={() => generateBulkPasswords(10)}
-              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+              className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
               title="Generate 10 passwords"
             >
               <Download className="w-4 h-4" />
-              Bulk
+              <span className="hidden sm:inline">Bulk</span>
             </button>
           </div>
         </div>
 
-        <div className="bg-gray-50 border rounded-lg p-4 font-mono text-lg break-all select-all">
+        <div className="bg-gray-50 border rounded-lg p-3 sm:p-4 font-mono text-sm sm:text-lg break-all select-all overflow-x-auto">
           {showPassword ? password : "•".repeat(password.length)}
         </div>
 
         {/* Security Analysis */}
         {securityAnalysis && (
-          <div className="mt-4 p-4 border rounded-lg">
+          <div className="mt-4 p-3 sm:p-4 border rounded-lg">
             <div className="flex items-center gap-2 mb-3">
               {getStrengthIcon(securityAnalysis.strength)}
-              <span className="font-semibold">Security Analysis</span>
+              <span className="font-semibold text-sm sm:text-base">
+                Security Analysis
+              </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-4">
               <div
                 className={`p-3 rounded-lg border ${getStrengthColor(
                   securityAnalysis.strength
                 )}`}
               >
-                <div className="text-sm font-medium">Strength</div>
-                <div className="text-lg font-bold">
+                <div className="text-xs sm:text-sm font-medium">Strength</div>
+                <div className="text-base sm:text-lg font-bold">
                   {securityAnalysis.strength}
                 </div>
                 <div className="text-xs">
@@ -480,18 +482,20 @@ export default function PasswordGenerator({
               </div>
 
               <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="text-sm font-medium text-gray-600">Entropy</div>
-                <div className="text-lg font-bold text-gray-900">
+                <div className="text-xs sm:text-sm font-medium text-gray-600">
+                  Entropy
+                </div>
+                <div className="text-base sm:text-lg font-bold text-gray-900">
                   {securityAnalysis.entropy} bits
                 </div>
                 <div className="text-xs text-gray-500">Randomness measure</div>
               </div>
 
-              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="text-sm font-medium text-gray-600">
+              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 sm:col-span-2 lg:col-span-1">
+                <div className="text-xs sm:text-sm font-medium text-gray-600">
                   Time to Crack
                 </div>
-                <div className="text-lg font-bold text-gray-900">
+                <div className="text-base sm:text-lg font-bold text-gray-900 break-words">
                   {securityAnalysis.timeToCrack}
                 </div>
                 <div className="text-xs text-gray-500">At 1B attempts/sec</div>
@@ -507,7 +511,7 @@ export default function PasswordGenerator({
                   {securityAnalysis.issues.map((issue, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                      {issue}
+                      <span className="break-words">{issue}</span>
                     </li>
                   ))}
                 </ul>
@@ -523,7 +527,7 @@ export default function PasswordGenerator({
                   {securityAnalysis.suggestions.map((suggestion, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                      {suggestion}
+                      <span className="break-words">{suggestion}</span>
                     </li>
                   ))}
                 </ul>
@@ -534,12 +538,12 @@ export default function PasswordGenerator({
       </div>
 
       {/* Password Options */}
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
         <h3 className="text-lg font-semibold mb-4">Password Options</h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Length */}
-          <div>
+          <div className="lg:col-span-2">
             <label className="block text-sm font-medium mb-2">
               Length: {options.length} characters
             </label>
@@ -583,18 +587,18 @@ export default function PasswordGenerator({
                 chars: CHARACTER_SETS.symbols,
               },
             ].map(({ key, label, chars }) => (
-              <label key={key} className="flex items-center gap-2">
+              <label key={key} className="flex items-center gap-2 text-sm">
                 <input
                   type="checkbox"
                   checked={options[key as keyof PasswordOptions] as boolean}
                   onChange={(e) =>
                     updateOption(key as keyof PasswordOptions, e.target.checked)
                   }
-                  className="rounded border-gray-300"
+                  className="rounded border-gray-300 flex-shrink-0"
                 />
-                <span className="text-sm">{label}</span>
-                <span className="text-xs text-gray-400">
-                  ({chars.length} chars)
+                <span className="break-words">{label}</span>
+                <span className="text-xs text-gray-400 flex-shrink-0">
+                  ({chars.length})
                 </span>
               </label>
             ))}
@@ -606,65 +610,65 @@ export default function PasswordGenerator({
               Advanced Options
             </label>
 
-            <label className="flex items-center gap-2">
+            <label className="flex items-start gap-2 text-sm">
               <input
                 type="checkbox"
                 checked={options.excludeSimilar}
                 onChange={(e) =>
                   updateOption("excludeSimilar", e.target.checked)
                 }
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 flex-shrink-0 mt-0.5"
               />
-              <span className="text-sm">
+              <span className="break-words">
                 Exclude similar characters (il1Lo0O)
               </span>
             </label>
 
-            <label className="flex items-center gap-2">
+            <label className="flex items-start gap-2 text-sm">
               <input
                 type="checkbox"
                 checked={options.excludeAmbiguous}
                 onChange={(e) =>
                   updateOption("excludeAmbiguous", e.target.checked)
                 }
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 flex-shrink-0 mt-0.5"
               />
-              <span className="text-sm">
+              <span className="break-words">
                 Exclude ambiguous characters ({"{}[]()/\\'\"~,;.<>"})
               </span>
             </label>
 
-            <label className="flex items-center gap-2">
+            <label className="flex items-start gap-2 text-sm">
               <input
                 type="checkbox"
                 checked={options.requireAllTypes}
                 onChange={(e) =>
                   updateOption("requireAllTypes", e.target.checked)
                 }
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 flex-shrink-0 mt-0.5"
               />
-              <span className="text-sm">
+              <span className="break-words">
                 Require all selected character types
               </span>
             </label>
           </div>
 
           {/* Custom Characters */}
-          <div>
+          <div className="lg:col-span-2">
             <label className="block text-sm font-medium mb-2">
               Custom Character Set
             </label>
 
-            <label className="flex items-center gap-2 mb-2">
+            <label className="flex items-center gap-2 mb-2 text-sm">
               <input
                 type="checkbox"
                 checked={options.useCustomChars}
                 onChange={(e) =>
                   updateOption("useCustomChars", e.target.checked)
                 }
-                className="rounded border-gray-300"
+                className="rounded border-gray-300 flex-shrink-0"
               />
-              <span className="text-sm">Use custom characters only</span>
+              <span>Use custom characters only</span>
             </label>
 
             <input
@@ -672,10 +676,10 @@ export default function PasswordGenerator({
               value={options.customChars}
               onChange={(e) => updateOption("customChars", e.target.value)}
               placeholder="Enter custom characters..."
-              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
               disabled={!options.useCustomChars}
             />
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-500 mt-1 break-words">
               {options.customChars.length} characters available
               {charset.length > 0 &&
                 ` • Final charset: ${charset.length} characters`}
@@ -686,44 +690,48 @@ export default function PasswordGenerator({
 
       {/* Password History */}
       {passwordHistory.length > 0 && (
-        <div className="bg-white border border-gray-200 rounded-lg p-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
             <h3 className="text-lg font-semibold">Recent Passwords</h3>
             <button
               onClick={clearHistory}
-              className="flex items-center gap-1 px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+              className="flex items-center gap-1 px-3 py-1 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors self-start sm:self-auto"
             >
               <RotateCcw className="w-4 h-4" />
               Clear History
             </button>
           </div>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {passwordHistory.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-3 bg-gray-50 rounded-lg"
               >
                 <div className="flex-1 min-w-0">
-                  <div className="font-mono text-sm break-all">
+                  <div className="font-mono text-sm break-all overflow-x-auto">
                     {showPassword
                       ? item.password
                       : "•".repeat(item.password.length)}
                   </div>
-                  <div className="flex items-center gap-3 mt-1 text-xs text-gray-500">
-                    <span>{new Date(item.timestamp).toLocaleTimeString()}</span>
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-2 text-xs text-gray-500">
+                    <span className="whitespace-nowrap">
+                      {new Date(item.timestamp).toLocaleTimeString()}
+                    </span>
                     <span
-                      className={`px-2 py-1 rounded ${getStrengthColor(
+                      className={`px-2 py-1 rounded whitespace-nowrap ${getStrengthColor(
                         item.analysis.strength
                       )}`}
                     >
                       {item.analysis.strength}
                     </span>
-                    <span>{item.analysis.entropy} bits</span>
+                    <span className="whitespace-nowrap">
+                      {item.analysis.entropy} bits
+                    </span>
                   </div>
                 </div>
                 <button
                   onClick={() => copyToClipboard(item.password)}
-                  className="flex items-center gap-1 px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors ml-3"
+                  className="flex items-center gap-1 px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex-shrink-0 self-start sm:self-auto"
                 >
                   <Copy className="w-3 h-3" />
                   Copy
