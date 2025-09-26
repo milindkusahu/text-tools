@@ -78,6 +78,22 @@ export const tools: Tool[] = [
     path: "/email-extractor",
     icon: "AtSign",
   },
+  {
+    id: "text-encoder",
+    name: "Text Encoder/Decoder",
+    description:
+      "Encode and decode text using Base64, URL encoding, and HTML entities",
+    path: "/text-encoder",
+    icon: "Shield",
+  },
+  {
+    id: "password-generator",
+    name: "Password Generator",
+    description:
+      "Generate secure passwords with advanced customization and security analysis",
+    path: "/password-generator",
+    icon: "Key",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {
