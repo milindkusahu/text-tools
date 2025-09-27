@@ -3,8 +3,9 @@ import { Tool } from "./types";
 export const tools: Tool[] = [
   {
     id: "word-counter",
-    name: "Word Counter",
-    description: "Count words, characters, and sentences in your text",
+    name: "Advanced Word Counter",
+    description:
+      "Professional text analysis with readability scores, keyword density, and comprehensive statistics",
     path: "/word-counter",
     icon: "Calculator",
   },

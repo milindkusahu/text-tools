@@ -3,18 +3,23 @@ import { constructMetadata } from "@/lib/metadata";
 import ClientWordCounter from "./client";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Word Counter - Count Words, Characters & Sentences",
+  title: "Advanced Word Counter & Text Analyzer - Professional Text Analysis",
   description:
-    "Free online word counter tool. Count words, characters, sentences, and paragraphs in your text.",
+    "Professional-grade word counter with advanced text analysis, readability scoring, keyword density analysis, vocabulary richness metrics, and comprehensive statistics. Perfect for writers, students, and content creators.",
   path: "/word-counter",
   keywords: [
-    "word counter",
-    "character counter",
-    "sentence counter",
-    "paragraph counter",
+    "advanced word counter",
+    "text analyzer",
+    "readability score",
+    "flesch reading ease",
+    "keyword density",
+    "vocabulary richness",
     "text statistics",
-    "word count tool",
-    "text analysis",
+    "writing analysis",
+    "content analysis",
+    "professional word counter",
+    "text quality metrics",
+    "writing tools",
   ],
 });
 

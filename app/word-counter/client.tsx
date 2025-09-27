@@ -6,46 +6,63 @@ import ToolPageLayout from "@/components/layout/ToolPageLayout";
 
 const wordCounterInfo = {
   features: [
-    "Real-time word counting as you type",
-    "Character count with and without spaces",
-    "Sentence and paragraph counter",
-    "Reading time estimation",
-    "Keyword density analysis",
-    "Support for multiple languages",
-    "Automatic saving of your work",
+    "Real-time comprehensive text analysis as you type",
+    "Advanced character counting with and without spaces",
+    "Complete sentence, paragraph, and line counting",
+    "Accurate reading and speaking time estimation",
+    "Professional readability scoring (Flesch, Gunning Fog, etc.)",
+    "Keyword density analysis with top word frequency",
+    "Vocabulary richness and repetition rate analysis",
+    "Language detection and multi-language support",
+    "Visual statistics cards with progress indicators",
+    "Export analysis results as downloadable reports",
+    "Advanced text quality metrics and insights",
+    "Automatic saving and restore functionality",
   ],
   howToUse: [
-    "Type or paste your text into the input box",
-    "Watch as the statistics update automatically",
-    "Use the toolbar to format your text if needed",
-    "Click the copy button to copy the results",
-    "Use the 'Clear' button to start fresh",
+    "Type or paste your text into the input field",
+    "View real-time basic statistics in the colorful cards above",
+    "Click 'Show Details' to reveal advanced analysis features",
+    "Explore readability scores, text quality metrics, and word analysis",
+    "Review the most common words and longest words in your text",
+    "Copy or download the complete analysis report",
+    "Use the save functionality to store your analysis for later",
   ],
   faqs: [
     {
-      question: "How are words counted?",
+      question: "What makes this word counter different from others?",
       answer:
-        "Words are counted by identifying groups of characters separated by spaces or punctuation. Hyphenated words count as one word.",
+        "Our advanced word counter provides comprehensive text analysis including readability scores, vocabulary richness, keyword density, and professional-grade metrics that go far beyond basic counting.",
     },
     {
-      question: "Does it count special characters?",
+      question: "How accurate are the readability scores?",
       answer:
-        "Yes, all characters including spaces, punctuation, and special symbols are included in the character count.",
+        "We use industry-standard formulas including Flesch Reading Ease, Flesch-Kincaid Grade Level, and Gunning Fog Index to provide accurate readability assessments for your text.",
     },
     {
-      question: "Can I count words in other languages?",
+      question: "What is vocabulary richness and why is it important?",
       answer:
-        "Yes, our word counter supports all languages and correctly counts words in languages that use different writing systems.",
+        "Vocabulary richness measures the percentage of unique words in your text. Higher richness indicates more diverse vocabulary, while lower richness suggests repetitive language patterns.",
     },
     {
-      question: "Is my text saved anywhere?",
+      question: "How are reading and speaking times calculated?",
       answer:
-        "No, all processing happens in your browser. Your text is never sent to our servers or stored anywhere.",
+        "Reading time is calculated at 250 words per minute (average reading speed), while speaking time uses 150 words per minute (average speaking pace). These are industry-standard benchmarks.",
     },
     {
-      question: "How is the reading time calculated?",
+      question: "Can I analyze text in languages other than English?",
       answer:
-        "Reading time is estimated based on an average reading speed of 250 words per minute for English text.",
+        "Yes! While some advanced features like readability scores work best with English, basic counting and analysis work with any language. We also include basic language detection.",
+    },
+    {
+      question: "Is my text data secure and private?",
+      answer:
+        "Absolutely! All analysis happens in your browser. Your text is never sent to our servers or stored anywhere. Complete privacy and security guaranteed.",
+    },
+    {
+      question: "What file formats can I export my analysis to?",
+      answer:
+        "You can download your complete analysis report as a text file (.txt) with all statistics, readability scores, and word analysis included in a formatted report.",
     },
   ],
 };
@@ -61,8 +78,8 @@ export default function ClientWordCounter() {
 
   return (
     <ToolPageLayout
-      title="Word Counter"
-      description="Count words, characters, sentences, and paragraphs in your text. Perfect for essays, social media posts, and content analysis."
+      title="Advanced Word Counter & Text Analyzer"
+      description="Professional-grade text analysis tool with comprehensive statistics, readability scoring, keyword analysis, and advanced metrics. Perfect for writers, students, content creators, and professionals."
       toolInfo={wordCounterInfo}
       input={input}
       output={output}
