@@ -399,34 +399,39 @@ export default function PermalinkGenerator({
     [options.separator]
   );
 
-  // Generate multiple permalink variations - inline to avoid dependency issues
-  const generateVariations = (
-    text: string,
-    currentOptions: PermalinkOptions
-  ): PermalinkResult[] => {
-    const strategies: Array<{ key: string; name: string }> = [
-      { key: "smart", name: "Smart SEO" },
-      { key: "seo", name: "SEO Optimized" },
-      { key: "uuid", name: "UUID Based" },
-      { key: "hash", name: "Hash Based" },
-      { key: "timestamp", name: "Timestamp" },
-      { key: "custom", name: "Custom Pattern" },
-    ];
+  // Generate multiple permalink variations - wrapped in useCallback to prevent recreation
+  const generateVariations = useCallback(
+    (text: string, currentOptions: PermalinkOptions): PermalinkResult[] => {
+      const strategies: Array<{ key: string; name: string }> = [
+        { key: "smart", name: "Smart SEO" },
+        { key: "seo", name: "SEO Optimized" },
+        { key: "uuid", name: "UUID Based" },
+        { key: "hash", name: "Hash Based" },
+        { key: "timestamp", name: "Timestamp" },
+        { key: "custom", name: "Custom Pattern" },
+      ];
 
-    return strategies.map((strategy) => {
-      const permalink = generatePermalink(text, strategy.key, currentOptions);
-      return {
-        original: text,
-        permalink,
-        strategy: strategy.name,
-        length: permalink.length,
-        seoScore: calculateSEOScore(permalink),
-        uniqueness: calculateUniqueness(permalink),
-        readability: calculateReadability(permalink),
-        timestamp: Date.now(),
-      };
-    });
-  };
+      return strategies.map((strategy) => {
+        const permalink = generatePermalink(text, strategy.key, currentOptions);
+        return {
+          original: text,
+          permalink,
+          strategy: strategy.name,
+          length: permalink.length,
+          seoScore: calculateSEOScore(permalink),
+          uniqueness: calculateUniqueness(permalink),
+          readability: calculateReadability(permalink),
+          timestamp: Date.now(),
+        };
+      });
+    },
+    [
+      generatePermalink,
+      calculateSEOScore,
+      calculateUniqueness,
+      calculateReadability,
+    ]
+  );
 
   // Update permalinks when input or options change
   useEffect(() => {
