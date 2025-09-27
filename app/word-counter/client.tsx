@@ -54,11 +54,20 @@ export default function ClientWordCounter() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
+  const restoreItem = (restoreInput: string, restoreOutput: string) => {
+    setInput(restoreInput);
+    setOutput(restoreOutput);
+  };
+
   return (
     <ToolPageLayout
       title="Word Counter"
       description="Count words, characters, sentences, and paragraphs in your text. Perfect for essays, social media posts, and content analysis."
       toolInfo={wordCounterInfo}
+      input={input}
+      output={output}
+      onRestoreItem={restoreItem}
+      toolId="word-counter"
     >
       <WordCounter
         input={input}

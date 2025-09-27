@@ -73,13 +73,28 @@ const textToSpeechInfo = {
 
 export default function ClientTextToSpeech() {
   const [input, setInput] = useState("");
-  const [, setOutput] = useState("");
+  const [output, setOutput] = useState("");
+
+  const swapInputOutput = () => {
+    setInput(output);
+    setOutput(input);
+  };
+
+  const restoreItem = (restoreInput: string, restoreOutput: string) => {
+    setInput(restoreInput);
+    setOutput(restoreOutput);
+  };
 
   return (
     <ToolPageLayout
       title="Text to Speech"
       description="Convert any text to speech with multiple voices, languages, and customizable settings. Perfect for accessibility, content creation, and language learning."
       toolInfo={textToSpeechInfo}
+      input={input}
+      output={output}
+      onSwapInputOutput={swapInputOutput}
+      onRestoreItem={restoreItem}
+      toolId="text-to-speech"
     >
       <TextToSpeech input={input} setInput={setInput} setOutput={setOutput} />
     </ToolPageLayout>

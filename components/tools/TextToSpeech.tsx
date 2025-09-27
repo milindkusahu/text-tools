@@ -184,13 +184,6 @@ export default function TextToSpeech({
     });
   }, [input, createUtterance]);
 
-  // Pause speech
-  const pauseSpeech = useCallback(() => {
-    if (speechSynthesis.speaking && !speechSynthesis.paused) {
-      speechSynthesis.pause();
-    }
-  }, []);
-
   // Resume speech
   const resumeSpeech = useCallback(() => {
     if (speechSynthesis.paused) {
@@ -647,8 +640,8 @@ export default function TextToSpeech({
           💡 MP3 Conversion Tips
         </h3>
         <p className="text-sm text-green-800 mb-2">
-          <strong>Note:</strong> The Web Speech API doesn't directly export MP3
-          files, but here are easy ways to get MP3 audio:
+          <strong>Note:</strong> The Web Speech API doesn&apos;t directly export
+          MP3 files, but here are easy ways to get MP3 audio:
         </p>
         <ul className="text-sm text-green-800 space-y-1 ml-4">
           <li>

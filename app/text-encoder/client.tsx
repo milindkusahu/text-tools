@@ -61,11 +61,26 @@ export default function ClientTextEncoder() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
+  const swapInputOutput = () => {
+    setInput(output);
+    setOutput(input);
+  };
+
+  const restoreItem = (restoreInput: string, restoreOutput: string) => {
+    setInput(restoreInput);
+    setOutput(restoreOutput);
+  };
+
   return (
     <ToolPageLayout
       title="Text Encoder/Decoder"
       description="Encode and decode text using Base64, URL encoding, and HTML entities. Perfect for developers, content creators, and anyone working with text data."
       toolInfo={textEncoderInfo}
+      input={input}
+      output={output}
+      onSwapInputOutput={swapInputOutput}
+      onRestoreItem={restoreItem}
+      toolId="text-encoder"
     >
       <TextEncoder
         input={input}
