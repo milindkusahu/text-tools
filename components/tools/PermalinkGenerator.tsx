@@ -830,24 +830,24 @@ export default function PermalinkGenerator({
             {generatedPermalinks.map((result, index) => (
               <div
                 key={index}
-                className={`p-4 border rounded-lg cursor-pointer transition-all ${
+                className={`p-4 border rounded-xl cursor-pointer transition-all duration-200 ${
                   selectedPermalink === result.permalink
-                    ? "border-blue-500 bg-blue-50"
-                    : "border-gray-200 hover:border-gray-300"
+                    ? "border-blue-500 bg-blue-50 shadow-md"
+                    : "border-gray-200 hover:border-gray-300 hover:shadow-sm"
                 }`}
                 onClick={() => setSelectedPermalink(result.permalink)}
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-sm font-medium text-gray-600">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-sm font-semibold text-gray-700">
                         {result.strategy}
                       </span>
-                      <span className="text-xs text-gray-500">
-                        ({result.length} chars)
+                      <span className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {result.length} chars
                       </span>
                     </div>
-                    <div className="font-mono text-sm bg-white p-2 rounded border">
+                    <div className="font-mono text-sm bg-white p-3 rounded-lg border border-gray-100 shadow-sm">
                       {result.permalink}
                     </div>
                   </div>
@@ -857,36 +857,37 @@ export default function PermalinkGenerator({
                       copyToClipboard(result.permalink);
                     }}
                     className="ml-4 p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                    title="Copy permalink"
                   >
                     <Copy className="w-4 h-4" />
                   </button>
                 </div>
 
                 {/* Scores */}
-                <div className="flex gap-4 mt-3">
+                <div className="flex gap-2 mt-4 flex-wrap">
                   <div
-                    className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${getScoreColor(
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium ${getScoreColor(
                       result.seoScore
                     )}`}
                   >
                     {getScoreIcon(result.seoScore)}
-                    SEO: {result.seoScore}
+                    SEO: {Math.round(result.seoScore)}
                   </div>
                   <div
-                    className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${getScoreColor(
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium ${getScoreColor(
                       result.uniqueness
                     )}`}
                   >
                     <Hash className="w-3 h-3" />
-                    Unique: {result.uniqueness}
+                    Unique: {Math.round(result.uniqueness)}
                   </div>
                   <div
-                    className={`flex items-center gap-1 px-2 py-1 rounded text-xs ${getScoreColor(
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium ${getScoreColor(
                       result.readability
                     )}`}
                   >
                     <Eye className="w-3 h-3" />
-                    Readable: {result.readability}
+                    Readable: {Math.round(result.readability)}
                   </div>
                 </div>
               </div>
