@@ -20,14 +20,38 @@ export default function JsonFormatter({
   const [errorMessage, setErrorMessage] = useState("");
   const [indentSize, setIndentSize] = useState(2);
   const [isMinified, setIsMinified] = useState(false);
+  const [fileSize, setFileSize] = useState(0);
+  const [isLargeFile, setIsLargeFile] = useState(false);
+  const [processingTime, setProcessingTime] = useState(0);
 
   const formatJSON = useCallback(
     (jsonString: string, minify: boolean = false) => {
+      const startTime = performance.now();
+
       try {
+        // Check file size
+        const sizeInBytes = new Blob([jsonString]).size;
+        const sizeInMB = sizeInBytes / (1024 * 1024);
+        setFileSize(sizeInMB);
+
+        // Check if it's a large file (>1MB)
+        const largeFile = sizeInMB > 1;
+        setIsLargeFile(largeFile);
+
+        if (largeFile) {
+          // For large files, show a warning but still process
+          setErrorMessage(
+            `Large file detected (${sizeInMB.toFixed(
+              2
+            )}MB). Processing may take longer.`
+          );
+        } else {
+          setErrorMessage("");
+        }
+
         // Parse the JSON to validate it
         const parsedJSON = JSON.parse(jsonString);
         setIsValid(true);
-        setErrorMessage("");
 
         // Format with specified indentation or minify
         const formattedJSON = minify
@@ -35,10 +59,15 @@ export default function JsonFormatter({
           : JSON.stringify(parsedJSON, null, indentSize);
 
         setOutput(formattedJSON);
+
+        // Calculate processing time
+        const endTime = performance.now();
+        setProcessingTime(endTime - startTime);
       } catch (err) {
         setIsValid(false);
         setErrorMessage((err as Error).message);
         setOutput("");
+        setProcessingTime(0);
       }
     },
     [indentSize, setOutput]
@@ -70,6 +99,37 @@ export default function JsonFormatter({
 
   return (
     <div className="space-y-6">
+      {/* File Info */}
+      {input.trim() && (
+        <div className="flex flex-wrap items-center gap-4 p-3 bg-gray-50 rounded-lg">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium">File Size:</span>
+            <span
+              className={`text-sm ${
+                isLargeFile ? "text-orange-600" : "text-green-600"
+              }`}
+            >
+              {fileSize.toFixed(2)} MB
+            </span>
+          </div>
+          {processingTime > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium">Processing Time:</span>
+              <span className="text-sm text-blue-600">
+                {processingTime.toFixed(2)} ms
+              </span>
+            </div>
+          )}
+          {isLargeFile && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-orange-600 font-medium">
+                ⚠️ Large file - processing may be slower
+              </span>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
@@ -130,6 +190,11 @@ export default function JsonFormatter({
               Formatted JSON:
               {!isValid && (
                 <span className="text-red-500 ml-2">Error: {errorMessage}</span>
+              )}
+              {isValid && isLargeFile && (
+                <span className="text-orange-500 ml-2">
+                  Warning: {errorMessage}
+                </span>
               )}
             </label>
             <button

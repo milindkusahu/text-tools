@@ -36,3 +36,75 @@
   border-radius: 4px;
   border: none;
 }
+
+/* Markdown Editor Syntax Highlighting */
+.markdown-preview pre {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.markdown-preview code.syntax-highlighted {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.875rem;
+}
+
+.markdown-preview code.inline-code {
+  background-color: #f1f5f9;
+  color: #1e293b;
+  padding: 0.125rem 0.25rem;
+  border-radius: 3px;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.875rem;
+}
+
+/* Language-specific syntax highlighting */
+.markdown-preview .language-javascript,
+.markdown-preview .language-js {
+  color: #fbbf24; /* Yellow for keywords */
+}
+
+.markdown-preview .language-python {
+  color: #10b981; /* Green for Python */
+}
+
+.markdown-preview .language-html {
+  color: #f97316; /* Orange for HTML */
+}
+
+.markdown-preview .language-css {
+  color: #3b82f6; /* Blue for CSS */
+}
+
+.markdown-preview .language-json {
+  color: #8b5cf6; /* Purple for JSON */
+}
+
+/* Code block line numbers */
+.markdown-preview pre code {
+  display: block;
+  line-height: 1.5;
+}
+
+/* Improved code block styling */
+.markdown-preview pre {
+  position: relative;
+}
+
+.markdown-preview pre::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #f59e0b);
+  border-radius: 8px 8px 0 0;
+}

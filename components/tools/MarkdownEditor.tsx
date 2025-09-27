@@ -116,6 +116,38 @@ export default function MarkdownEditor({
           e.preventDefault();
           insertText("*", "*");
           break;
+        case "k":
+          e.preventDefault();
+          insertText("[", "](url)");
+          break;
+        case "`":
+          e.preventDefault();
+          insertText("`", "`");
+          break;
+        case "1":
+          e.preventDefault();
+          insertText("# ");
+          break;
+        case "2":
+          e.preventDefault();
+          insertText("## ");
+          break;
+        case "3":
+          e.preventDefault();
+          insertText("### ");
+          break;
+        case "l":
+          e.preventDefault();
+          insertText("- ");
+          break;
+        case "o":
+          e.preventDefault();
+          insertText("1. ");
+          break;
+        case "enter":
+          e.preventDefault();
+          insertText("\n\n");
+          break;
       }
     }
   };
@@ -148,15 +180,28 @@ export default function MarkdownEditor({
     }
   };
 
+  // Simple syntax highlighting for code blocks
+  const highlightCode = useCallback((html: string) => {
+    // Add basic syntax highlighting classes
+    return html
+      .replace(
+        /<pre><code class="language-(\w+)">/g,
+        '<pre><code class="language-$1 syntax-highlighted">'
+      )
+      .replace(/<pre><code>/g, '<pre><code class="syntax-highlighted">')
+      .replace(/<code>/g, '<code class="inline-code">');
+  }, []);
+
   const renderMarkdown = useCallback(() => {
     try {
       const parser = new marked.Parser();
       const html = parser.parse(marked.Lexer.lex(markdown));
-      return { __html: html };
+      const highlightedHtml = highlightCode(html);
+      return { __html: highlightedHtml };
     } catch {
       return { __html: "Error parsing markdown" };
     }
-  }, [markdown]);
+  }, [markdown, highlightCode]);
 
   return (
     <div className="space-y-4">
@@ -238,7 +283,7 @@ export default function MarkdownEditor({
         <div
           className={`${
             activeTab === "preview" ? "block" : "hidden lg:block"
-          } h-[500px] p-4 border rounded-lg overflow-auto prose prose-sm max-w-none`}
+          } h-[500px] p-4 border rounded-lg overflow-auto prose prose-sm max-w-none markdown-preview`}
           dangerouslySetInnerHTML={renderMarkdown()}
         />
       </div>

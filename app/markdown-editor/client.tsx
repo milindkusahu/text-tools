@@ -6,20 +6,22 @@ import ToolPageLayout from "@/components/layout/ToolPageLayout";
 
 const markdownEditorInfo = {
   features: [
-    "Real-time Markdown preview",
-    "Keyboard shortcuts for common formatting",
-    "Support for all standard Markdown syntax",
-    "Toolbar for quick formatting",
-    "Split view with editor and preview",
-    "Code syntax highlighting",
-    "Table support",
-    "Export to HTML option",
+    "Real-time Markdown preview with live updates",
+    "Comprehensive keyboard shortcuts (Ctrl+B, Ctrl+I, Ctrl+K, Ctrl+`, etc.)",
+    "Support for all standard Markdown syntax including tables",
+    "Rich toolbar with quick formatting buttons",
+    "Split view with editor and preview modes",
+    "Code syntax highlighting with language-specific colors",
+    "Inline and block code styling with dark theme",
+    "Export to HTML with proper formatting",
+    "Professional code block styling with gradient headers",
   ],
   howToUse: [
     "Type or paste your Markdown in the editor",
-    "Use the toolbar buttons for common formatting",
-    "Use keyboard shortcuts like Ctrl+B for bold",
-    "Switch between Write and Preview modes",
+    "Use the toolbar buttons for quick formatting",
+    "Use keyboard shortcuts: Ctrl+B (bold), Ctrl+I (italic), Ctrl+K (link), Ctrl+` (code), Ctrl+1/2/3 (headings), Ctrl+L (list), Ctrl+O (numbered list)",
+    "Switch between Write and Preview modes or use split view",
+    "Code blocks automatically get syntax highlighting",
     "Copy the formatted text or export to HTML",
   ],
   faqs: [
@@ -31,22 +33,27 @@ const markdownEditorInfo = {
     {
       question: "What keyboard shortcuts are available?",
       answer:
-        "Common shortcuts include Ctrl+B for bold, Ctrl+I for italic. More shortcuts are available and shown in the toolbar tooltips.",
+        "We support many shortcuts: Ctrl+B (bold), Ctrl+I (italic), Ctrl+K (link), Ctrl+` (inline code), Ctrl+1/2/3 (headings), Ctrl+L (bullet list), Ctrl+O (numbered list), and Ctrl+Enter (double line break).",
+    },
+    {
+      question: "How does syntax highlighting work?",
+      answer:
+        "Code blocks automatically get syntax highlighting with language-specific colors. We support JavaScript, Python, HTML, CSS, JSON, and other languages with a dark theme and gradient headers.",
     },
     {
       question: "Can I use custom CSS in the preview?",
       answer:
-        "The preview uses a standard Markdown style. In the exported HTML, you can add your own CSS for custom styling.",
+        "The preview uses a professional Markdown style with syntax highlighting. In the exported HTML, you can add your own CSS for custom styling.",
     },
     {
       question: "Does it support tables?",
       answer:
-        "Yes, you can create tables using the standard Markdown syntax with pipes and hyphens.",
+        "Yes, you can create tables using the standard Markdown syntax with pipes and hyphens. The preview will render them with proper styling.",
     },
     {
       question: "Can I import existing Markdown files?",
       answer:
-        "Yes, you can paste any existing Markdown text into the editor. The tool will automatically format it according to Markdown rules.",
+        "Yes, you can paste any existing Markdown text into the editor. The tool will automatically format it according to Markdown rules with full syntax highlighting.",
     },
   ],
 };
