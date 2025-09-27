@@ -270,20 +270,20 @@ export default function MarkdownEditor({
       </div>
 
       {/* Editor/Preview Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className={activeTab === "write" ? "block" : "hidden lg:block"}>
           <textarea
             value={markdown}
             onChange={(e) => setMarkdown(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full h-[500px] p-4 border rounded-lg font-mono resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full h-[600px] p-4 border rounded-lg font-mono resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             placeholder="Type your markdown here..."
           />
         </div>
         <div
           className={`${
             activeTab === "preview" ? "block" : "hidden lg:block"
-          } h-[500px] p-4 border rounded-lg overflow-auto prose prose-sm max-w-none markdown-preview`}
+          } h-[600px] p-4 border rounded-lg overflow-auto prose prose-sm max-w-none markdown-preview`}
           dangerouslySetInnerHTML={renderMarkdown()}
         />
       </div>
