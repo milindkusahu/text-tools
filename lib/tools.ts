@@ -94,6 +94,14 @@ export const tools: Tool[] = [
     path: "/password-generator",
     icon: "Key",
   },
+  {
+    id: "text-to-speech",
+    name: "Text to Speech",
+    description:
+      "Convert text to speech with multiple voices, languages, and speed controls",
+    path: "/text-to-speech",
+    icon: "Volume2",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {
