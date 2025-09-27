@@ -103,6 +103,14 @@ export const tools: Tool[] = [
     path: "/text-to-speech",
     icon: "Volume2",
   },
+  {
+    id: "permalink-generator",
+    name: "Permalink Generator",
+    description:
+      "Professional permalink generator, slug generator, and URL slug creator with multiple strategies, SEO optimization, validation, and advanced customization",
+    path: "/permalink-generator",
+    icon: "Link",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {
