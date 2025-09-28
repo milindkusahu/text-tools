@@ -111,6 +111,14 @@ export const tools: Tool[] = [
     path: "/permalink-generator",
     icon: "Link",
   },
+  {
+    id: "text-to-binary-hex",
+    name: "Text to Binary/Hex Converter",
+    description:
+      "Convert text to binary, hexadecimal, and other encoding formats. Perfect for developers, cybersecurity, and data analysis.",
+    path: "/text-to-binary-hex",
+    icon: "Binary",
+  },
 ];
 
 export function getToolById(id: string): Tool | undefined {
